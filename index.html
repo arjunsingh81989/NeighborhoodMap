@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Neighborhood Map - Nearby Locations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/map.css" rel="stylesheet">
+
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src='js/knockout-3.4.0.js'></script>
+
+  </head>
+  
+  <body>
+    
+    
+    <!-- Header navbar -->
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+            <a id="sidebar-toggle" class="navbar-brand navbar-nav" href="#">
+              <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            </a>
+            
+            <!-- Search Bar: to filter locations -->
+            <form id="searchBar" class="navbar-form navbar-collapse" role="search"
+                  data-bind="submit: search">            
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon" id="searchText-addon">Find</span>
+                  <input type="text" class="form-control" placeholder="Popular Places" aria-describedby="searchText-addon"
+                          data-bind="textInput: searchText">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon" id="searchLocation-addon">Near</span>
+                  <input id="searchLocation" type="text" class="form-control" placeholder="Requesting current location..." aria-describedby="searchLocation-addon"
+                         data-toggle="popover" data-placement="bottom" data-trigger="manual" title="Current location"
+                          data-bind="value: searchLocation">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>            
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div id="wrapper">
+      
+      <!-- Sidebar: Using Simple Sidebar template
+      http://startbootstrap.com/template-overviews/simple-sidebar/ -->
+      <div id="sidebar-wrapper">
+        
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- List View: show locations that have been searched for -->
+              <ul id="location-filter-list" class="list-group"
+                  data-bind="foreach: locations">
+                <li class="list-group-item"
+                    data-bind="css: { active: selected }, click: $parent.setSelection">
+                  <img class="icon" data-bind="attr: {src: icon}" alt="Place Icon">
+                  <span data-bind="text: name"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div><!-- End of sidebar -->
+      
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row row-full">
+            <div class="col-md-12 map">
+              <div id="map"><!-- Place holder for the Google Map --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <script src="js/map.js"></script>    
+    <script src="js/app.js"></script>    
+	  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsbb_5q873-MGG5mw9e0XQVnlET65y1As&callback=init&libraries=places" type="text/javascript"></script>
+  </body>
+</html>
