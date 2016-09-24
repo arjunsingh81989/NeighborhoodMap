@@ -1,4 +1,4 @@
-# Neighborhood Map
+# Neighborhood Map : Udacity's Front End NanoDegree Program
 
 Technologies: Knockout Javascript Framework, Bootstrap, jQuery
 
