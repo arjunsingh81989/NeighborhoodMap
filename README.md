@@ -1,6 +1,6 @@
 # Neighborhood Map Project : Udacity's Front End NanoDegree Program
 
-Technologies: Knockout Javascript Framework, Bootstrap, jQuery
+Technologies: Knockout JavaScript Framework, Bootstrap, jQuery
 
 This application finds nearby attractions for your current location using Google Maps API and shows them in a map with markers.
 
